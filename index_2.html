@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로마의 공화정 </title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+
+        * {
+            font-family: 'Nanum Brush Script', cursive;
+        }
+
+        #comment-list ul {
+            font-size: 20px;
+            font-weight: 350;
+        }
+    </style>
+    <script>
+        // 댓글 목록을 저장할 배열
+        let comments = [];
+
+        // 댓글 등록 버튼을 클릭하면 실행되는 함수
+        function submitComment() {
+            // 입력된 댓글 내용과 작성자 이름 가져오기
+            const name = document.getElementById("name").value;
+            const comment = document.getElementById("comment").value;
+
+            // 댓글 목록에 추가하기
+            comments.push({ name, comment });
+
+            // 입력 폼 초기화하기
+            document.getElementById("name").value = "";
+            document.getElementById("comment").value = "";
+
+            // 댓글 목록 업데이트하기
+            updateCommentList();
+        }
+
+        // 댓글 목록을 업데이트하는 함수
+        function updateCommentList() {
+            const commentList = document.getElementById("comment-list").querySelector("ul");
+
+            // 댓글 목록 초기화하기
+            commentList.innerHTML = "";
+
+            // 댓글 목록 추가하기
+            comments.forEach(comment => {
+                const li = document.createElement("li");
+                li.innerText = `${comment.name}: ${comment.comment}`;
+                commentList.appendChild(li);
+            });
+        }
+    </script>
+
+</head>
+
+<header>
+    <h1 onclick="window.location.href='https://cgj0079.github.io/Republic-of-rome/'" style="font-weight: 300;"
+        class="pointer">로마의 공화정</h1>
+    <nav>
+        <ul>
+            <div class="btn">
+                <button type="button"
+                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-goverment/');"
+                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">정부</button>
+                <div class="space">
+                </div>
+                <button type="button"
+                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-militery/');"
+                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">군대</button>
+                <div class="space">
+                </div>
+                <button type="button"
+                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-econemy/');"
+                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">경제</button>
+                <div class="space">
+                </div>
+                <button type="button"
+                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-law/');"
+                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">법률</button>
+                <div class="space">
+                </div>
+                <button type="button"
+                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-society/');"
+                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">사회
+                    구조</button>
+                <div class="space">
+                </div>
+                <button type="button"
+                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-culture/');"
+                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">문화</button>
+            </div>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <br><br><br><br><br><br><br>
+    <div class="start">
+        <div style="display:inline-block;vertical-align:top;">
+            <img src="https://wimg.mk.co.kr/meet/neds/2021/11/image_readtop_2021_1028576_16365342674832405.jpg"
+                alt="img" style="box-shadow: 0px 0px 10px 0px; width: 600px; height: 400px;" />
+        </div>
+        <div style="display:inline-block;">
+            <h1 style="font-size: 250%; font-weight: 350;">정부</h1>
+            <h3 style="font-size: 150%; font-weight: 350;">로마 공화정은 콘스룰(consul) 두 명이 정치 권한을 가지는 공동 출장제를 채택하였다.
+                <br>이들은 직접 선출되었으며 일년에 한 번씩 교체되었다. 또한, 귀족 중 일부는 상원의원으로, 일반 시민 중 일부는 하원의원으로 선출되었다.
+            </h3>
+        </div>
+    </div>
+    <br><br><br>
+    <form style="margin-left: 10px;" id="comment-form">
+        <label for="name" style="font-size: 1.25em;">Nickname:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="comment" style="font-size: 1.25em;" required>Comment:</label><br>
+        <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Leave a comment" style="font-size: 1.25em;" class="pointer"
+            onclick="submitComment()">
+    </form>
+    <div id="comment-list">
+        <h2>Comment list</h2>
+        <ul>
+            <!-- 이곳에 댓글 목록이 추가됩니다 -->
+        </ul>
+    </div>
+    <br><br><br><br>
+    <br><br><br><br><br>
+    <div style="background-color: #333; box-shadow: 0px 3px 3px rgba(0,0,0,0.3); text-align: left;">
+        <a onclick="window.location.href=('https://cgj0079.github.io/about_me/');" target="_blank" rel="noopener"
+            style="color: white; text-decoration: none; font-size: 125%;  cursor: pointer;">made
+            by 최국준</a>
+            <br><br><br><br><br><br>
+            <a target="_blank" rel="noopener" style="color: white; text-decoration: dashed; font-size: 125%;">출처: </a>
+        <br><br><br>
+    </div>
+</body>
+
+</html>
