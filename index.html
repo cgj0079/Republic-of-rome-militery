@@ -2,142 +2,249 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로마의 공화정 </title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로마의 공화정 </title>
+  <link>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap');
 
-        * {
-            font-family: 'Nanum Brush Script', cursive;
-        }
+    * {
+      font-family: 'Nanum Brush Script', cursive;
+    }
 
-        #comment-list ul {
-            font-size: 20px;
-            font-weight: 350;
-        }
-    </style>
-    <script>
-        // 댓글 목록을 저장할 배열
-        let comments = [];
+    #comment-list ul {
+      font-size: 20px;
+      font-weight: 350;
+    }
 
-        // 댓글 등록 버튼을 클릭하면 실행되는 함수
-        function submitComment() {
-            // 입력된 댓글 내용과 작성자 이름 가져오기
-            const name = document.getElementById("name").value;
-            const comment = document.getElementById("comment").value;
+    /* 전체 페이지 스타일 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-            // 댓글 목록에 추가하기
-            comments.push({ name, comment });
+    /* 헤더 스타일 */
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
 
-            // 입력 폼 초기화하기
-            document.getElementById("name").value = "";
-            document.getElementById("comment").value = "";
+    header h1 {
+      margin: 0;
+      font-size: 40px;
+    }
 
-            // 댓글 목록 업데이트하기
-            updateCommentList();
-        }
+    header nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
 
-        // 댓글 목록을 업데이트하는 함수
-        function updateCommentList() {
-            const commentList = document.getElementById("comment-list").querySelector("ul");
+    header nav li {
+      margin-right: 20px;
+    }
 
-            // 댓글 목록 초기화하기
-            commentList.innerHTML = "";
+    header nav li:last-child {
+      margin-right: 0;
+    }
 
-            // 댓글 목록 추가하기
-            comments.forEach(comment => {
-                const li = document.createElement("li");
-                li.innerText = `${comment.name}: ${comment.comment}`;
-                commentList.appendChild(li);
-            });
-        }
-    </script>
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* 섹션 스타일 */
+    section {
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    section h2 {
+      font-size: 30px;
+      margin-top: 0;
+    }
+
+    /* 푸터 스타일 */
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* 추가 스타일 */
+    .btn {
+      height: 15px;
+      width: 1500px;
+      margin: 20px auto 20px auto;
+      padding: 20px 20px 20px 20px;
+
+      display: flex;
+      flex-direction: row;
+      /* align-items: center; */
+      /* justify-content: center; */
+
+      margin-top: 20px;
+      margin-left: 75px;
+    }
+
+    .btn>button:hover {
+      text-decoration: underline;
+      transform: scale(1.25);
+      cursor: pointer;
+    }
+
+    .space {
+      width: 15px;
+      height: auto;
+      display: inline-block;
+    }
+
+    .pointer:hover {
+      cursor: pointer;
+    }
+
+    .start {
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        background-color: rgba(255, 255, 255, 0);
+        transform: translate3d(0, 100%, 0);
+      }
+
+      75% {
+        opacity: 1;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 1);
+        transform: none;
+      }
+    }
+  </style>
+  <script>
+    // 댓글 목록을 저장할 배열
+    let comments = [];
+
+    // 댓글 등록 버튼을 클릭하면 실행되는 함수
+    function submitComment() {
+      // 입력된 댓글 내용과 작성자 이름 가져오기
+      const name = document.getElementById("name").value;
+      const comment = document.getElementById("comment").value;
+
+      // 댓글 목록에 추가하기
+      comments.push({ name, comment });
+
+      // 입력 폼 초기화하기
+      document.getElementById("name").value = "";
+      document.getElementById("comment").value = "";
+
+      // 댓글 목록 업데이트하기
+      updateCommentList();
+    }
+
+    // 댓글 목록을 업데이트하는 함수
+    function updateCommentList() {
+      const commentList = document.getElementById("comment-list").querySelector("ul");
+
+      // 댓글 목록 초기화하기
+      commentList.innerHTML = "";
+
+      // 댓글 목록 추가하기
+      comments.forEach(comment => {
+        const li = document.createElement("li");
+        li.innerText = `${comment.name}: ${comment.comment}`;
+        commentList.appendChild(li);
+      });
+    }
+  </script>
 
 </head>
 
 <header>
-    <h1 onclick="window.location.href='https://cgj0079.github.io/Republic-of-rome/'" style="font-weight: 300;"
-        class="pointer">로마의 공화정</h1>
-    <nav>
-        <ul>
-            <div class="btn">
-                <button type="button"
-                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-goverment/');"
-                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">정부</button>
-                <div class="space">
-                </div>
-                <button type="button"
-                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-militery/');"
-                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">군대</button>
-                <div class="space">
-                </div>
-                <button type="button"
-                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-econemy/');"
-                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">경제</button>
-                <div class="space">
-                </div>
-                <button type="button"
-                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-law/');"
-                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">법률</button>
-                <div class="space">
-                </div>
-                <button type="button"
-                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-society/');"
-                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">사회
-                    구조</button>
-                <div class="space">
-                </div>
-                <button type="button"
-                    onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-culture/');"
-                    style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">문화</button>
-            </div>
-        </ul>
-    </nav>
+  <h1 onclick="window.location.href='https://cgj0079.github.io/Republic-of-rome/'" style="font-weight: 300;"
+    class="pointer">로마의 공화정</h1>
+  <nav>
+    <ul>
+      <div class="btn">
+        <button type="button" onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-goverment/');"
+          style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">정부</button>
+        <div class="space">
+        </div>
+        <button type="button" onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-militery/');"
+          style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">군대</button>
+        <div class="space">
+        </div>
+        <button type="button" onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-econemy/');"
+          style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">경제</button>
+        <div class="space">
+        </div>
+        <button type="button" onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-law/');"
+          style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">법률</button>
+        <div class="space">
+        </div>
+        <button type="button" onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-society/');"
+          style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">사회
+          구조</button>
+        <div class="space">
+        </div>
+        <button type="button" onclick="window.location.href=('https://cgj0079.github.io/Republic-of-rome-culture/');"
+          style="background: none; border: none; width: 150px; height: 50px;font-size: 1.5em;color: white;">문화</button>
+      </div>
+    </ul>
+  </nav>
 </header>
 
 <body>
-    <br><br><br><br><br><br><br>
-    <div class="start">
-        <div style="display:inline-block;vertical-align:top;">
-            <img src="https://wimg.mk.co.kr/meet/neds/2021/11/image_readtop_2021_1028576_16365342674832405.jpg"
-                alt="img" style="box-shadow: 0px 0px 10px 0px; width: 600px; height: 400px;" />
-        </div>
-        <div style="display:inline-block;">
-            <h1 style="font-size: 250%; font-weight: 350;">군대</h1>
-            <h3 style="font-size: 150%; font-weight: 350;">아직
-                <br>미완
-            </h3>
-        </div>
+  <br><br><br><br><br><br><br>
+  <div class="start">
+    <div style="display:inline-block;vertical-align:top;">
+      <img src="https://wimg.mk.co.kr/meet/neds/2021/11/image_readtop_2021_1028576_16365342674832405.jpg" alt="img"
+        style="box-shadow: 0px 0px 10px 0px; width: 600px; height: 400px;" />
     </div>
-    <br><br><br>
-    <form style="margin-left: 10px;" id="comment-form">
-        <label for="name" style="font-size: 1.25em;">Nickname:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="comment" style="font-size: 1.25em;" required>Comment:</label><br>
-        <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
+    <div style="display:inline-block;">
+      <h1 style="font-size: 250%; font-weight: 350;">군대</h1>
+      <h3 style="font-size: 150%; font-weight: 350;">아직
+        <br>미완
+      </h3>
+    </div>
+  </div>
+  <br><br><br>
+  <form style="margin-left: 10px;" id="comment-form">
+    <label for="name" style="font-size: 1.25em;">Nickname:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    <label for="comment" style="font-size: 1.25em;" required>Comment:</label><br>
+    <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
 
-        <input type="submit" value="Leave a comment" style="font-size: 1.25em;" class="pointer"
-            onclick="submitComment()">
-    </form>
-    <div id="comment-list">
-        <h2>Comment list</h2>
-        <ul>
-            <!-- 이곳에 댓글 목록이 추가됩니다 -->
-        </ul>
-    </div>
-    <br><br><br><br>
-    <br><br><br><br><br>
-    <div style="background-color: #333; box-shadow: 0px 3px 3px rgba(0,0,0,0.3); text-align: left;">
-        <a onclick="window.location.href=('https://cgj0079.github.io/about_me/');" target="_blank" rel="noopener"
-            style="color: white; text-decoration: none; font-size: 125%;  cursor: pointer;">made
-            by 최국준</a>
-            <br><br><br><br><br><br>
-            <a target="_blank" rel="noopener" style="color: white; text-decoration: dashed; font-size: 125%;">출처: </a>
-        <br><br><br>
-    </div>
+    <input type="submit" value="Leave a comment" style="font-size: 1.25em;" class="pointer" onclick="submitComment()">
+  </form>
+  <div id="comment-list">
+    <h2>Comment list</h2>
+    <ul>
+      <!-- 이곳에 댓글 목록이 추가됩니다 -->
+    </ul>
+  </div>
+  <br><br><br><br>
+  <br><br><br><br><br>
+  <div style="background-color: #333; box-shadow: 0px 3px 3px rgba(0,0,0,0.3); text-align: left;">
+    <a onclick="window.location.href=('https://cgj0079.github.io/about_me/');" target="_blank" rel="noopener"
+      style="color: white; text-decoration: none; font-size: 125%;  cursor: pointer;">made
+      by 최국준</a>
+    <br><br><br><br><br><br>
+    <a target="_blank" rel="noopener" style="color: white; text-decoration: dashed; font-size: 125%;">출처: </a>
+    <br><br><br>
+  </div>
 </body>
 
 </html>
