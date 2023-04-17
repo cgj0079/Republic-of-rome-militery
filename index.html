@@ -164,7 +164,8 @@
       // 댓글 목록 추가하기
       comments.forEach(comment => {
         const li = document.createElement("li");
-        li.innerText = `${comment.name}: ${comment.comment}`;
+        li.innerText = `${comment.name}
+        <div>${comment.comment}`;
         commentList.appendChild(li);
       });
     }
