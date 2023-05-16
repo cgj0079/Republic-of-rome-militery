@@ -143,9 +143,15 @@
             const name = document.getElementById("name").value;
             const comment = document.getElementById("comment").value;
 
-            // 닉네임과 댓글 내용이 모두 입력되었는지 확인하기
-            if (!name || !comment) {
-                alert("Please enter your nickname and comment.");
+            // 만약 name이 공백이거나 비어있다면 알림창을 띄움
+            if (name.trim() === "") {
+                alert("Nickname을 입력해주세요.")
+                return;
+            }
+            
+            // 만약 commen가 공백이거나 비어있다면 알림창을 띄움
+            if (comment.trim() === "") {
+                alert("변경을 요구하는 사항을 입력해주세요.")
                 return;
             }
 
